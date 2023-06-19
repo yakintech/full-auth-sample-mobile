@@ -1,0 +1,1 @@
+* async storage üzerinden token check edilecek
