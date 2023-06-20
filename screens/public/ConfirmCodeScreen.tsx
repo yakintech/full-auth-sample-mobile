@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/loginSlice';
 
@@ -26,6 +26,16 @@ const ConfirmCodeScreen = ({ route }: any) => {
                     dispatch(login())
 
                 })
+            })
+            .catch(err => {
+                
+                if(err.response){
+                   Alert.alert(err.response.data.message)
+                }
+                else{
+                    Alert.alert("Error!")
+                }
+    
             })
     }
 

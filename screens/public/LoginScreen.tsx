@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { StyleSheet, View, ImageBackground, Image, TextInput, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, ImageBackground, Image, TextInput, TouchableOpacity, Text, Alert } from 'react-native';
 
 
 const LoginScreen = ({ navigation }: any) => {
@@ -14,7 +14,9 @@ const LoginScreen = ({ navigation }: any) => {
         navigation.navigate("Confirm", {email: email});
       })
       .catch(err => {
-        //ekrana uyarı vereceğim ( email or password wrong!)
+      
+        Alert.alert('Email veya şifre hatalı!');
+    
       })
   };
 
