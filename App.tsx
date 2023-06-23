@@ -1,4 +1,4 @@
-import { View, Text, Button, SafeAreaView } from 'react-native'
+import { View, Text, Button, SafeAreaView, NativeModules } from 'react-native'
 import React, { useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
@@ -6,10 +6,21 @@ import Main from './Main'
 import { store } from './store/store'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+
+
 const App = () => {
 
+  const {CalendarModule} = NativeModules;
+
+  
+  const addCalendar = () => {
+    CalendarModule.createCalendarEvent("çağatay","ali")
+  }
+  
   return (<>
-    <UploadSampe />
+  <Button title='Add Calendar Event' onPress={addCalendar}></Button>
+  {/* <BigListSample/> */}
+    {/* <UploadSampe /> */}
     {/* <NavigationContainer>
       <Provider store={store}>
         <Main/>
@@ -25,6 +36,7 @@ export default App
 
 import { launchImageLibrary } from 'react-native-image-picker';
 import axios from 'axios'
+import BigListSample from './screens/public/BigListSample'
 
 const UploadSampe = () => {
 
